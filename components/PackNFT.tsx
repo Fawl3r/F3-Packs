@@ -1,20 +1,26 @@
 import { MARKETPLACE_ADDRESS, PACK_ADDRESS } from "../const/addresses";
-import { MediaRenderer, Web3Button, useAddress, useContract, useDirectListings, useNFT } from "@thirdweb-dev/react";
+import { MediaRenderer, Web3Button, useAddress, useContract, useDirectListings, useNFT, CurrencyValue, Price } from "@thirdweb-dev/react";
 import styles from "../styles/Home.module.css";
-import { BigNumberish } from "ethers";
+import { id } from "ethers/lib/utils";
 
 type Props = {
     contractAddress: string;
     tokenId: any;
+    listingId: any;
 };
 
-export const PackNFTCard = ({ contractAddress, tokenId }: Props) => {
+type ListingFormData = {
+    nftContractAddress: string;
+    tokenId: string;
+    price: string;
+};
+
+export const PackNFTCard = ({ contractAddress, tokenId, listingId }: Props) => {
     const address = useAddress();
 
     const { contract: marketplace, isLoading: loadingMarketplace } = useContract(MARKETPLACE_ADDRESS, "marketplace-v3");
     const { contract: packContract } = useContract(contractAddress);
     const { data: packNFT, isLoading: loadingNFT } = useNFT(packContract, tokenId);
-
 
     const { data: packListings, isLoading: loadingPackListings } = 
     useDirectListings(
@@ -23,22 +29,26 @@ export const PackNFTCard = ({ contractAddress, tokenId }: Props) => {
             tokenContract: PACK_ADDRESS,
         }
     );
+
     console.log("Pack Listings: ", packListings);
 
-    async function buyPack(listingId: string | number, quantity: BigNumberish) {
+    // Find the specific listing based on the listingId
+    const currentListing = packListings?.find(listing => listing.id === listingId);
+
+    async function buyPack() {
         let txResult;
 
-        if (packListings?.[listingId]) {
+        if (packListings?.[tokenId]) {
             txResult = await marketplace?.directListings.buyFromListing(
                 packListings[listingId].id,
-                quantity
-            );
+                1
+            )
         } else {
             throw new Error("No valid listing found");
         }
-
+            
         return txResult;
-    }
+    };
 
     return (
         <div className={styles.packCard}>
@@ -54,16 +64,15 @@ export const PackNFTCard = ({ contractAddress, tokenId }: Props) => {
                     <div className={styles.packInfo}>
                         <h3>{packNFT?.metadata.name}</h3>
                         
-                        <p>Cost: {packListings![tokenId].currencyValuePerToken.displayValue} {` ` + packListings![tokenId].currencyValuePerToken.symbol}</p>
-                        <p>Supply: {packListings![tokenId].quantity}</p>
+                        <p>Cost: {currentListing?.currencyValuePerToken.displayValue} {` ` + currentListing?.currencyValuePerToken.symbol}</p>
+                        <p>Supply: {currentListing?.quantity}</p>
                         {!address ? (
                             <p>Login to buy</p>
                         ) : (
                             <Web3Button
-    contractAddress={MARKETPLACE_ADDRESS}
-    action={() => buyPack(tokenId, 1)}
-    >Buy Pack</Web3Button>
-
+                            contractAddress={MARKETPLACE_ADDRESS}
+                            action={() => buyPack()}
+                            >Buy Pack</Web3Button>
                         )}
                     </div>
                 </div>

@@ -27,6 +27,7 @@ export default function Marketplace() {
                             <NFTCard
                                 tokenID={listing.asset.id}
                                 listingID={listing.id}
+                                contractAddress={CARD_ADDRESS}
                             />
                         </div>
                     ))

@@ -5,6 +5,7 @@ import { CARD_ADDRESS, MARKETPLACE_ADDRESS } from "../const/addresses";
 type Props = {
     tokenID: string;
     listingID: string;
+    contractAddress: string; // Add this line
 };
 
 export default function NFTCard({ tokenID, listingID }: Props) {

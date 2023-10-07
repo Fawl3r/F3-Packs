@@ -185,8 +185,8 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: flex-start;
-  width: 60%;
+  align-items: flex-START;
+  width: 150%;
 }
 
 .nftCard {
