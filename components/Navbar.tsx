@@ -18,14 +18,14 @@ export default function Navbar() {
         <div className={styles.container}>
             <div className={styles.navbar}>
                 <Link href="/">
-                    <p>Creatures</p>
+                <img src={`https://static.wixstatic.com/media/1808ae_d7e2677e53784c8eba07a386e424d352~mv2.png`} alt="Logo" width={300} height={200} />
+                    <p>F3 Warrior Pack Store</p>
+                    
+                
                 </Link>
                 <div className={styles.navLinks}>
                     <Link href="/shop">
                         <p>Shop</p>
-                    </Link>
-                    <Link href="/marketplace">
-                        <p>Marketplace</p>
                     </Link>
                 </div>
                 <div>
@@ -39,7 +39,7 @@ export default function Navbar() {
                         <div
                             onClick={() => setIsProfileDropdownOpen(!isProfileDropdownOpen)}
                         >
-                            <img src={`https://avatars.dicebear.com/api/avataaars/1.svg`} alt="avatar" className={styles.avatar}/>
+                            <img src={`https://static.wixstatic.com/media/1808ae_089d68a117034dc8bfd737aec5d6bccc~mv2.gif`} alt="avatar" className={styles.avatar}/>
                         </div>
                     )}
                 </div>
@@ -49,7 +49,7 @@ export default function Navbar() {
                             <p>My Packs</p>
                         </Link>
                         <Link href="/myCards">
-                            <p>My Cards</p>
+                            <p>My NFTs</p>
                         </Link>
                         <button
                             onClick={disconnectWallet}

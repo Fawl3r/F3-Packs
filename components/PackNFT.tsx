@@ -1,6 +1,7 @@
 import { MARKETPLACE_ADDRESS, PACK_ADDRESS } from "../const/addresses";
 import { MediaRenderer, Web3Button, useAddress, useContract, useDirectListings, useNFT } from "@thirdweb-dev/react";
 import styles from "../styles/Home.module.css";
+import { BigNumberish } from "ethers";
 
 type Props = {
     contractAddress: string;
@@ -24,20 +25,20 @@ export const PackNFTCard = ({ contractAddress, tokenId }: Props) => {
     );
     console.log("Pack Listings: ", packListings);
 
-    async function buyPack() {
+    async function buyPack(listingId: string | number, quantity: BigNumberish) {
         let txResult;
 
-        if (packListings?.[tokenId]) {
+        if (packListings?.[listingId]) {
             txResult = await marketplace?.directListings.buyFromListing(
-                packListings[tokenId].id,
-                1
-            )
+                packListings[listingId].id,
+                quantity
+            );
         } else {
             throw new Error("No valid listing found");
         }
-            
+
         return txResult;
-    };
+    }
 
     return (
         <div className={styles.packCard}>
@@ -59,9 +60,10 @@ export const PackNFTCard = ({ contractAddress, tokenId }: Props) => {
                             <p>Login to buy</p>
                         ) : (
                             <Web3Button
-                            contractAddress={MARKETPLACE_ADDRESS}
-                            action={() => buyPack()}
-                            >Buy Pack</Web3Button>
+    contractAddress={MARKETPLACE_ADDRESS}
+    action={() => buyPack(tokenId, 1)}
+    >Buy Pack</Web3Button>
+
                         )}
                     </div>
                 </div>
