@@ -22,7 +22,7 @@ export default function MyPacks() {
     
     return (
         <div className={styles.container}>
-            <h1>My Packs</h1>
+            <h1>F3 Packs</h1>
             <div className={styles.grid}>
                 {!isLoading ? (
                     data?.map((pack, index) => (

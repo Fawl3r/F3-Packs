@@ -23,7 +23,7 @@ export default function MyCards() {
 
     return (
         <div className={styles.container}>
-            <h1>My Cards</h1>
+            <h1>F3 NFTs</h1>
             <div className={styles.grid}>
                 {!selectedNFT ? (
                     !loadingNFTCollection && !loadingNFTs ? (
