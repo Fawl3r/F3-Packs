@@ -18,14 +18,16 @@ export default function Navbar() {
         <div className={styles.container}>
             <div className={styles.navbar}>
                 <Link href="/">
-                <img src={`https://static.wixstatic.com/media/1808ae_d7e2677e53784c8eba07a386e424d352~mv2.png`} alt="Logo" width={300} height={200} />
+                    <img src={`https://static.wixstatic.com/media/1808ae_d7e2677e53784c8eba07a386e424d352~mv2.png`} alt="Logo" width={300} height={200} />
                     <p>F3 Warrior Pack Store</p>
-                    
-                
                 </Link>
                 <div className={styles.navLinks}>
                     <Link href="/shop">
                         <p>Buy Packs</p>
+                    </Link>
+                    {/* Add the "My Packs" hyperlink */}
+                    <Link href="/myPacks">
+                        <p>My Packs</p>
                     </Link>
                 </div>
                 <div>
@@ -58,5 +60,5 @@ export default function Navbar() {
                 )}
             </div>
         </div>
-    )
+    );
 }
