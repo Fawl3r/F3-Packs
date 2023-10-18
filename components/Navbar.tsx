@@ -25,10 +25,14 @@ export default function Navbar() {
                     <Link href="/shop">
                         <p>Buy Packs</p>
                     </Link>
-                    {/* Add the "My Packs" hyperlink */}
-                    <Link href="/myPacks">
-                        <p>My Packs</p>
+                    <Link href="https://f3-nexium-marketplace.vercel.app/">
+                        <p>F3 Nexium Marketplace</p>
                     </Link>
+                    {address && (
+                        <Link href="/myPacks">
+                            <p>My Packs</p>
+                        </Link>
+                    )}
                 </div>
                 <div>
                     {!address ? (
@@ -47,9 +51,6 @@ export default function Navbar() {
                 </div>
                 {isProfileDropdownOpen && (
                     <div className={styles.profileDropdown}>
-                        <Link href="/myPacks">
-                            <p>My Packs</p>
-                        </Link>
                         <Link href="/myCards">
                             <p>My NFTs</p>
                         </Link>
@@ -60,5 +61,5 @@ export default function Navbar() {
                 )}
             </div>
         </div>
-    );
+    )
 }
