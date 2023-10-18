@@ -12,9 +12,9 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <ThirdwebProvider activeChain={activeChain} clientId="39020559f22ebc5fa1c550b700ccc3bc" supportedWallets={[
         metamaskWallet(),
-        coinbaseWallet({ recommended: true }),
+        
         walletConnect(),
-        embeddedWallet(),
+        
         trustWallet({ recommended: true }),
       ]}>
       <ConnectWallet theme={"dark"} switchToActiveChain={true} modalSize={"wide"} />
