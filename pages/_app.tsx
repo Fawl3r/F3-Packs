@@ -10,7 +10,7 @@ const activeChain = "binance";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <ThirdwebProvider activeChain={activeChain} clientId="0df246a8070eeeb76c3ae5880244ec25" supportedWallets={[
+    <ThirdwebProvider activeChain={activeChain} clientId="39020559f22ebc5fa1c550b700ccc3bc" supportedWallets={[
         metamaskWallet(),
         coinbaseWallet({ recommended: true }),
         walletConnect(),
