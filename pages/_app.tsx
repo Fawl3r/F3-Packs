@@ -1,5 +1,5 @@
+import { ThirdwebProvider, ConnectWallet, metamaskWallet, coinbaseWallet, walletConnect, embeddedWallet, trustWallet } from "@thirdweb-dev/react";
 import type { AppProps } from "next/app";
-import { ThirdwebProvider } from "@thirdweb-dev/react";
 import "../styles/globals.css";
 import Navbar from "../components/Navbar";
 
@@ -10,7 +10,14 @@ const activeChain = "binance";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <ThirdwebProvider activeChain={activeChain} clientId="0df246a8070eeeb76c3ae5880244ec25">
+    <ThirdwebProvider activeChain={activeChain} clientId="0df246a8070eeeb76c3ae5880244ec25" supportedWallets={[
+        metamaskWallet(),
+        coinbaseWallet({ recommended: true }),
+        walletConnect(),
+        embeddedWallet(),
+        trustWallet({ recommended: true }),
+      ]}>
+      <ConnectWallet theme={"dark"} switchToActiveChain={true} modalSize={"wide"} />
       <Navbar />
       <Component {...pageProps} />
     </ThirdwebProvider>
