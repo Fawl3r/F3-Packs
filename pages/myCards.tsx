@@ -36,10 +36,7 @@ export default function MyCards() {
                                     <h3>{nft.metadata.name}</h3>
                                     <p>Qty: {nft.quantityOwned}</p>
                                 </div>
-                                <button
-                                    onClick={() => setSelectedNFT(nft)}
-                                    className={styles.saleButton}
-                                >Sell Card</button>
+                                
                             </div>
                         ))
                     ) :(
