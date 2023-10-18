@@ -14,7 +14,7 @@ export default function MyPacks() {
     const [openPackRewards, setOpenPackRewards] = useState<PackRewards>();
 
     async function openPack(packId: string) {
-        const cardRewards = await contract?.open(parseInt(packId), 1, 2000001);
+        const cardRewards = await contract?.open(parseInt(packId), 1, 1000001);
         console.log(cardRewards);
         setOpenPackRewards(cardRewards);
     };
