@@ -61,13 +61,6 @@ export const PackNFTCard = ({ contractAddress, tokenId, listingId }: Props) => {
             {!loadingNFT && !loadingPackListings ? (
                 <div className={styles.shopPack}>
                     <div>
-                        {/* Input field for quantity */}
-                        <input
-                            type="number"
-                            value={quantity}
-                            onChange={handleQuantityChange}
-                            min="1"
-                        />
                         <MediaRenderer
                             src={packNFT?.metadata.image}
                             width="80%"
@@ -83,6 +76,14 @@ export const PackNFTCard = ({ contractAddress, tokenId, listingId }: Props) => {
                             <p>Login to buy</p>
                         ) : (
                             <div>
+                                {/* Quantity input field under "Standard Warrior Pack" */}
+                                <h4>Standard Warrior Pack</h4>
+                                <input
+                                    type="number"
+                                    value={quantity}
+                                    onChange={handleQuantityChange}
+                                    min="1"
+                                />
                                 {/* Button to buy packs */}
                                 <button onClick={() => buyPack()}>Buy Pack(s)</button>
                             </div>
