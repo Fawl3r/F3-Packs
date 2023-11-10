@@ -2,7 +2,10 @@ import { ThirdwebNftMedia, useAddress, useContract, useOwnedNFTs } from "@thirdw
 import styles from "../styles/Home.module.css";
 import sharedStyles from "../styles/sharedStyles.module.css";
 import { CARD_ADDRESS } from "../const/addresses";
+
 import { useState, useEffect, useRef } from "react";
+
+
 import type { NFT as NFTType } from "@thirdweb-dev/sdk";
 import { ListingInfo } from "../components/ListingInfo";
 import { motion } from "framer-motion";
