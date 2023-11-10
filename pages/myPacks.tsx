@@ -4,6 +4,7 @@ import { PACK_ADDRESS } from '../const/addresses';
 import { useState } from 'react';
 import { PackRewards } from '@thirdweb-dev/sdk/dist/declarations/src/evm/schema';
 import { PackRewardCard } from '../components/PackRewardCard';
+import { motion } from "framer-motion"; // Import motion
 
 export default function MyPacks() {
     const address = useAddress();
@@ -18,17 +19,40 @@ export default function MyPacks() {
         console.log(cardRewards);
         setOpenPackRewards(cardRewards);
     };
-    
-    
+
     return (
-        <div className={styles.container}>
+        <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1 }}
+            className={`${styles.container} ${styles.container}`}
+        >
+            <div className={styles.videoBackground}>
+                <video
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    className={styles.video}
+                >
+                    <source src="/bghero.mp4" type="video/mp4" />
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+
             <h1>F3 Packs</h1>
             <div className={styles.grid}>
                 {!isLoading ? (
                     data?.map((pack, index) => (
-                        <div key={index} className={styles.nftCard}>
+                        <motion.div
+                            key={index}
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.5, delay: index * 0.1 }}
+                            className={styles.nftCard}
+                        >
                             <ThirdwebNftMedia
-                            metadata={pack.metadata}
+                                metadata={pack.metadata}
                             />
                             <div className={styles.myCardInfo}>
                                 <h3>{pack.metadata.name}</h3>
@@ -39,9 +63,9 @@ export default function MyPacks() {
                                 action={() => openPack(pack.metadata.id)}
                                 className={styles.saleButton}
                             >Open Pack</Web3Button>
-                        </div>
+                        </motion.div>
                     ))
-                    ) : (
+                ) : (
                     <p>Loading...</p>
                 )}
             </div>
@@ -50,14 +74,14 @@ export default function MyPacks() {
                     <h3>Pack Rewards:</h3>
                     <div className={styles.grid}>
                         {openPackRewards.erc1155Rewards.map((card, index) => (
-                        <PackRewardCard
-                            reward={card}
-                            key={index}
-                        />
+                            <PackRewardCard
+                                reward={card}
+                                key={index}
+                            />
                         ))}
                     </div>
                 </div>
             )}
-        </div>
+        </motion.div>
     )
 }

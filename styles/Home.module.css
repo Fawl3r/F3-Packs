@@ -1,5 +1,5 @@
 .container {
-  padding: 0 2rem;
+  padding: 0 3rem;
 }
 
 .main {
@@ -12,6 +12,25 @@
   align-items: center;
 }
 
+.videoBackground {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* Ensures the video stays in the background */
+}
+
+.video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensures the video covers the entire area */
+}
+
+/* Add your existing CSS styles below */
+.content {
+  /* Your existing content styles */
+}
 .title a {
   color: #f213a4;
   text-decoration: none;
@@ -129,14 +148,14 @@
 }
 .navLinks {
   display: flex;
-  justify-content: flex-end;
-  width: 50%;
+  justify-content: flex-center;
+  width: 32%;
 }
 .navLinks a {
-  color: #C9B260;
+  color: #ffffff;
   margin: 0px 10px;
   text-decoration: none;
-  font-size: 2rem;
+  font-size: 1.5rem;
   transition: all 0.3s ease 0s;
 }
 .navLinks a:hover {
@@ -147,7 +166,7 @@
   height: 80px;
   border-radius: 50%;
   object-fit: cover;
-  margin-left: 1rem;
+  margin-left: auto;
   border: #0ea5e9 solid 2px;
   transition: all 0.3s ease 0s;
 }
@@ -161,10 +180,11 @@
   top: 80px;
   right: 20px;
   width: 200px;
-  background-color: #212357;
+  background-color: #000000;
   border-radius: 10px;
   padding: 10px;
   box-shadow: 0px 0px 10px 0px rgba(255, 255, 255, 0.1);
+  z-index: 1; /* Add a higher z-index value */
 }
 
 .packCard {
@@ -176,17 +196,18 @@
   flex-direction: row;
   align-items: center;
   width: 100%;
-  background-color: #212357;
+  background-color: rgba(33, 87, 64, 0.7); /* Use RGBA with an opacity value of 0.7 */
   padding: 20px;
   border-radius: 10px;
   border: #C9B260 solid 2px;
 }
+
 .packInfo {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: flex-START;
-  width: 150%;
+  align-items: flex-start;
+  width: 60%;
 }
 
 .nftCard {
@@ -287,4 +308,216 @@
 }
 .connectWalletBtn {
   background-color: #C9B260 !important;
+}
+.content {
+  max-width: 1204px;
+  width: 100%;
+  margin-left: 16px;
+  margin-right: 16px;
+}
+
+.hero {
+  padding-bottom: 128px;
+}
+
+.heroBackground {
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  min-width: 100vw;
+  max-width: 100vw;
+  height: clamp(1000px, calc(59.6vw + 776px), 1540px);
+  pointer-events: none;
+}
+
+.heroBackgroundInner {
+  position: absolute;
+  top: -352px;
+  left: 50%;
+  width: clamp(1000px, calc(59.6vw + 776px), 1540px);
+  aspect-ratio: 1/1;
+  transform: translateX(-50%);
+}
+
+.gradient {
+  height: 100%;
+  width: 100%;
+  opacity: 0.76;
+}
+
+.heroAssetFrame {
+  display: flex;
+  justify-content: center;
+  margin: 300px auto 0;
+  padding: 2em;
+  overflow: hidden;
+}
+
+.heroAsset {
+  max-width: 100vw;
+  margin-bottom: 16px;
+}
+
+.heroBodyContainer {
+  width: 100%;
+  padding: 0 32px;
+  margin: 0 auto;
+}
+
+.heroBody {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.heroTitle {
+  margin-top: clamp(-30px, calc(-7vw + 57px), 5px);
+  margin-bottom: 20px;
+  color: #fff;
+  font-size: Min(12vw, 80px);
+  font-style: normal;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  text-align: center;
+  overflow: visible;
+  letter-spacing: -0.05em;
+}
+
+.heroTitleGradient {
+  padding-right: 12px;
+  font-weight: 1000;
+}
+
+.heroSubtitle {
+  max-width: 640px;
+  margin: 0 0 40px;
+  color: hsl(0, 0%, 100%);
+  font-size: Min(3.8vw, 20px);
+  letter-spacing: 0.3px;
+  line-height: 140%;
+  text-align: center;
+  transform: translateY(5px);
+}
+
+.heroCtaContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 16px;
+}
+
+.codeButton {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  width: 560px;
+  max-width: 100%;
+  height: 48px;
+  font-family: "Fira Code", monospace;
+  font-size: 16px;
+  background-color: transparent;
+  border: 2px solid hsla(0, 0%, 100%, 0.1);
+  border-radius: 8px;
+  transition: background-color 0.2s;
+}
+
+/* Place a $  before the code button text */
+.codeButton::before {
+  content: "$ ";
+  color: #fff;
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 0.2px;
+  line-height: 20px;
+  margin-right: 8px;
+}
+
+.codeButton:hover {
+  cursor: pointer;
+  background-color: hsla(0, 0%, 100%, 0.1);
+}
+
+.codeButtonCopy {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  max-width: 100%;
+  font-family: "Fira Code", monospace;
+  font-size: 16px;
+  background-color: transparent;
+  border: none;
+  opacity: 0.9;
+}
+
+.heroCta {
+  position: relative;
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 40px;
+  border: 3px solid hsla(0, 0%, 100%, 0.1);
+  margin: 16px 0;
+  background-clip: padding-box;
+  background-color: hsla(0, 0%, 100%, 0.9);
+  border-radius: 8px;
+  color: #0d0d0d;
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 0.2px;
+  line-height: 20px;
+  transition: opacity 0.2s;
+  width: 280px;
+}
+
+.heroCta::before {
+  position: absolute;
+  z-index: -1;
+  top: 5px;
+  right: 5px;
+  bottom: 0;
+  left: 5px;
+  background: conic-gradient(
+    from 147.14deg at 50% 50%,
+    var(--color-primary) -55.68deg,
+    var(--color-secondary) 113.23deg,
+    var(--color-tertiary) 195deg,
+    var(--color-quaternary) 304.32deg,
+    var(--color-primary) 473.23deg
+  );
+  border-radius: 6px;
+  content: "";
+  filter: blur(20px);
+  opacity: 0.6;
+}
+
+.heroCta:hover {
+  cursor: pointer;
+  opacity: 0.7;
+}
+
+.secondaryCta {
+  color: #fff;
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 0.2px;
+  line-height: 20px;
+  transition: background-color 0.2s;
+  width: 280px;
+  border: 1px solid hsla(0, 0%, 100%, 0.25);
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  transition: all 0.15s ease-in-out;
+}
+
+.secondaryCta:hover {
+  background-color: hsla(0, 0%, 100%, 0.1);
 }
