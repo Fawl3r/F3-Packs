@@ -68,7 +68,7 @@ export default function Navbar() {
             onMouseLeave={() => setIsTravelDropdownOpen(false)}
             style={travelLinkStyle} // Apply the font size here
           >
-            Travel
+            Menu
             {isTravelDropdownOpen && (
               <motion.div
                 className={styles.travelDropdown}
